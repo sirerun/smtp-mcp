@@ -22,7 +22,7 @@ Stdio is supported; authenticated HTTP remains future work.
 - [ ] T3 Write README, examples and release automation. Owner: coordinator. Est: 20m. deps: [T1]. verifies: [installation, configuration]. acc: [examples match flags and release archives contain binary and license].
 - [ ] T4 Verify and independently review exact source. Owner: coordinator and independent reviewer. Est: 20m. deps: [T2, T3]. verifies: [infrastructure]. acc: [test, race, vet, lint, vulnerability and stdio smoke pass with no unresolved review findings].
 - [ ] T5 Merge and verify landed source. Owner: coordinator. Est: 10m. deps: [T4]. verifies: [infrastructure]. acc: [remote main matches reviewed content and landed checks pass].
-- [ ] T6 Publish v0.1.0 and verify assets. Owner: coordinator. Est: 15m. deps: [T5]. verifies: [installation]. acc: [public release tag targets landed source and downloaded checksums pass].
+- [ ] T6 Publish v0.1.0 and verify assets. Owner: coordinator. Est: 15m. deps: [T5]. verifies: [installation]. acc: [public release tag targets landed source, downloaded checksums pass, and GitHub description readback matches].
 - [ ] T7 Record relocation in original smtpd PR. Owner: coordinator. Est: 5m. deps: [T6]. verifies: [infrastructure]. acc: [original draft closed as superseded and existing main unchanged].
 
 ## Parallel work and milestones
