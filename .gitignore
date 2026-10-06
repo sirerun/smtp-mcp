@@ -1,0 +1,7 @@
+/ajent.social
+/dist/
+/smtp-mcp
+/smtp-mcp.exe
+*.test
+coverage.out
+.env
