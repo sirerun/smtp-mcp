@@ -18,9 +18,9 @@ Stdio is supported; authenticated HTTP remains future work.
 ## Work breakdown
 
 - [x] T1 Freeze extraction contract. Owner: coordinator. Est: 10m. verifies: [infrastructure]. acc: [module, names, license, transport and release scope recorded].
-- [ ] T2 Extract code and tests. Owner: implementation lane. Est: 20m. deps: [T1]. verifies: [preview, send, status]. acc: [standalone module builds and all adapter tests pass].
-- [ ] T3 Write README, examples and release automation. Owner: coordinator. Est: 20m. deps: [T1]. verifies: [installation, configuration]. acc: [examples match flags and release archives contain binary and license].
-- [ ] T4 Verify and independently review exact source. Owner: coordinator and independent reviewer. Est: 20m. deps: [T2, T3]. verifies: [infrastructure]. acc: [test, race, vet, lint, vulnerability and stdio smoke pass with no unresolved review findings].
+- [x] T2 Extract code and tests. Owner: implementation lane. Est: 20m. deps: [T1]. verifies: [preview, send, status]. acc: [standalone module builds and all adapter tests pass].
+- [x] T3 Write README, examples and release automation. Owner: coordinator. Est: 20m. deps: [T1]. verifies: [installation, configuration]. acc: [examples match flags and release archives contain binary and license].
+- [x] T4 Verify and independently review exact source. Owner: coordinator and independent reviewer. Est: 20m. deps: [T2, T3]. verifies: [infrastructure]. acc: [test, race, vet, lint, vulnerability and stdio smoke pass with no unresolved review findings].
 - [ ] T5 Merge and verify landed source. Owner: coordinator. Est: 10m. deps: [T4]. verifies: [infrastructure]. acc: [remote main matches reviewed content and landed checks pass].
 - [ ] T6 Publish v0.1.0 and verify assets. Owner: coordinator. Est: 15m. deps: [T5]. verifies: [installation]. acc: [public release tag targets landed source, downloaded checksums pass, and GitHub description readback matches].
 - [ ] T7 Record relocation in original smtpd PR. Owner: coordinator. Est: 5m. deps: [T6]. verifies: [infrastructure]. acc: [original draft closed as superseded and existing main unchanged].
@@ -58,3 +58,13 @@ merge, landed verification, release publication and downloaded asset verificatio
 See README for the public interface and docs/release.md for release procedure.
 The project-root ajent.social coordination file is ignored in this public repo.
 Original source: https://github.com/sirerun/smtpd/pull/7.
+
+- 2026-10-05: At source `2eea9a290ae8dc9665fce92d20e55cc60b7ef715`,
+  standalone tests, race tests, vet, full lint (zero issues), native build and
+  real stdio initialization/tool/preview/disabled-send/status/EOF smoke passed.
+  GoReleaser configuration validated; module integrity verified. Current
+  govulncheck found zero reachable vulnerabilities and one uncalled module-level
+  advisory. Independent full-head review found no actionable issues. All heavy
+  checks used the owned shared build lease after load fell below 10. No exception
+  was needed. Hosted CI did not start due an account billing lock; there are no
+  repository self-hosted runners. Public description was set and read back.
