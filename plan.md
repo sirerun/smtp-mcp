@@ -21,9 +21,9 @@ Stdio is supported; authenticated HTTP remains future work.
 - [x] T2 Extract code and tests. Owner: implementation lane. Est: 20m. deps: [T1]. verifies: [preview, send, status]. acc: [standalone module builds and all adapter tests pass].
 - [x] T3 Write README, examples and release automation. Owner: coordinator. Est: 20m. deps: [T1]. verifies: [installation, configuration]. acc: [examples match flags and release archives contain binary and license].
 - [x] T4 Verify and independently review exact source. Owner: coordinator and independent reviewer. Est: 20m. deps: [T2, T3]. verifies: [infrastructure]. acc: [test, race, vet, lint, vulnerability and stdio smoke pass with no unresolved review findings].
-- [ ] T5 Merge and verify landed source. Owner: coordinator. Est: 10m. deps: [T4]. verifies: [infrastructure]. acc: [remote main matches reviewed content and landed checks pass].
-- [ ] T6 Publish v0.1.0 and verify assets. Owner: coordinator. Est: 15m. deps: [T5]. verifies: [installation]. acc: [public release tag targets landed source, downloaded checksums pass, and GitHub description readback matches].
-- [ ] T7 Record relocation in original smtpd PR. Owner: coordinator. Est: 5m. deps: [T6]. verifies: [infrastructure]. acc: [original draft closed as superseded and existing main unchanged].
+- [x] T5 Merge and verify landed source. Owner: coordinator. Est: 10m. deps: [T4]. verifies: [infrastructure]. acc: [remote main matches reviewed content and landed checks pass].
+- [x] T6 Publish v0.1.0 and verify assets. Owner: coordinator. Est: 15m. deps: [T5]. verifies: [installation]. acc: [public release tag targets landed source, downloaded checksums pass, and GitHub description readback matches].
+- [x] T7 Record relocation in original smtpd PR. Owner: coordinator. Est: 5m. deps: [T6]. verifies: [infrastructure]. acc: [original draft closed as superseded and existing main unchanged].
 
 ## Parallel work and milestones
 
@@ -68,3 +68,18 @@ Original source: https://github.com/sirerun/smtpd/pull/7.
   checks used the owned shared build lease after load fell below 10. No exception
   was needed. Hosted CI did not start due an account billing lock; there are no
   repository self-hosted runners. Public description was set and read back.
+
+- 2026-10-05: [PR 1](https://github.com/sirerun/smtp-mcp/pull/1) was
+  rebase-merged after independent review of `49f3132e9112935cc189707e6d048b47fad1a692`.
+  Landed `2817710294b2e70212cf37312126a2de8ffef2ea` has the identical reviewed
+  tree and passed the race suite. Tag `v0.1.0` resolves to that landed revision.
+  GoReleaser built all six target archives under the owned build lease; archive
+  contents include the expected binary, README and Apache 2.0 license.
+- 2026-10-05: [v0.1.0](https://github.com/sirerun/smtp-mcp/releases/tag/v0.1.0)
+  is public with six archives and checksums.txt. All six uploaded archives were
+  downloaded and their checksums verified. The downloaded macOS ARM64 binary
+  reports 0.1.0 and passed the real stdio smoke test. Other platforms were
+  cross-compiled, not runtime-tested. GitHub description and public visibility
+  were verified by readback. Original smtpd PR 7 was closed as superseded without
+  merging or deleting its history. The original daemon main was not changed by
+  this extraction. No running mail service or external email was involved.
